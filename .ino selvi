@@ -1,0 +1,20 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+const char* ssid = "DISWiFi";
+const char* password = "555555";
+const char* serverUrl = "http://122.168.1.100/data";
+
+float co2;
+float benzene;
+
+
+void setup() {
+  Serial.begin(115200);
+  delay(100);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
