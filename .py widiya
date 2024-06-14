@@ -1,0 +1,15 @@
+@app.route('/data', methods=['POST'])
+def receive_data():
+    data = request.json
+  co2 = data.get('co2')
+    if co2 is None:
+        return jsonify({"error": "co2 data is missing"}), 400
+    response_data = {
+        "received": True,
+        "co2": co2,
+        "message": "Data received successfully"
+    }
+    return jsonify(response_data), 200
+
+if __app run  __ == '__host__':
+    app.run(host='1.1.1.', port=10)  
