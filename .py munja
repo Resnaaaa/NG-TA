@@ -1,0 +1,15 @@
+@app.route('/data', methods=['POST'])
+def receive_data():
+    data = request.json
+     sulfur= data['sulfur']
+    benzene = data['benzene']
+
+    # Menyimpan data ke file
+    with open('air_quality_data.txt', 'a') as file:
+        file.write(f"sulfur: {sulfur}, benzene: {benzene}, \n")
+
+    return jsonify({"message": "Data received and saved to file successfully"}), 200
+
+if __run app__ == '__host__':
+    app.run(host='16.16.16', port=60)
+
